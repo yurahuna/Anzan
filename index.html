@@ -29,8 +29,8 @@
 
             newGame();
 
-            document.onkeydown = function(e) {
-                if (e.code === "Enter") {
+            onkeydown = function(e) {
+                if (e.keyCode == 13) {
                     ans.value == sol ? AC() : WA();
                 }
             }
