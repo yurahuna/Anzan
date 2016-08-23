@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset='utf-8'>
+    <title>修行(暗算)</title>
+    <style>
+        input {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="question"></div>
+    <div id="result"></div>
+    <input type="text" id="answer"/>
+    <p>o: <span id="cnt_o">0</span></p>
+    <p>x: <span id="cnt_x">0</span></p>
+
+    <script>
+        (function(){
+            "use strict";
+
+            var q = document.getElementById("question");
+            var result = document.getElementById("result");
+            var ans = document.getElementById("answer");
+            var cnt_o = document.getElementById("cnt_o");
+            var cnt_x = document.getElementById("cnt_x");
+            var sol;
+
+            newGame();
+
+            document.onkeydown = function(e) {
+                if (e.code === "Enter") {
+                    ans.value == sol ? AC() : WA();
+                }
+            }
+
+            function newGame() {
+                ans.value = "";
+                // 1以上MAX以下の整数をランダムに生成
+                var MAX = 9;
+                var x = Math.floor(Math.random() * (MAX - 1)) + 1;
+                var y = Math.floor(Math.random() * (MAX - 1)) + 1;
+                sol = x + y;
+                q.innerText = x + " + " + y + " = ";
+            }
+
+            function AC() {
+                // blinkTextBox("green");
+                updateCnt(cnt_o);
+                newGame();
+            }
+
+            function WA() {
+                blinkTextBox("red");
+                updateCnt(cnt_x);
+            }
+
+            function blinkTextBox(color) {
+                ans.style.borderColor = color;
+                setTimeout(function() {
+                    ans.style.borderColor = "white";
+                }, 50);
+            }
+
+            function updateCnt(cnt) {
+                cnt.innerText++;
+            }
+
+        })();
+    </script>
+</body>
+</html>
