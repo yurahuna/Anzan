@@ -37,8 +37,8 @@
 
             function newGame() {
                 ans.value = "";
-                // 1以上MAX以下の整数をランダムに生成
-                var MAX = 9;
+                // 1以上MAX未満の整数をランダムに生成
+                var MAX = 10;
                 var x = Math.floor(Math.random() * (MAX - 1)) + 1;
                 var y = Math.floor(Math.random() * (MAX - 1)) + 1;
                 sol = x + y;
